@@ -17,7 +17,7 @@ function Items({ items, addItem, reduceItem, handleOnChange }) {
                     checked={item.isSelected}
                     onChange={() => handleOnChange(item.itemName)}
                 />
-                <span>{item.itemName}</span>
+                <span className='item'>{item.itemName}</span>
             </div>
             <ItemsNumber item={item} addItem={addItem} reduceItem={reduceItem} />
         </div>
