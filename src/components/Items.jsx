@@ -4,14 +4,18 @@ import ItemsNumber from './ItemsNumber'
 function Items({ items, addItem, reduceItem, handleOnChange }) {
 
     return items.map((item) => (
-        <div className="items-list">
+        <div
+            className="items-list"
+            key={item.itemName}
+            style={{
+                textDecoration: item.isSelected ? "line-through" : "none",
+                color: item.isSelected ? "#B5DDA4" : "white"
+            }}>
             <div>
                 <input
                     type="checkbox"
-                    name=""
-                    id=""
-                    checked={ item.isSelected }
-                    onChange={() => handleOnChange(item.itemName)} 
+                    checked={item.isSelected}
+                    onChange={() => handleOnChange(item.itemName)}
                 />
                 <span>{item.itemName}</span>
             </div>
