@@ -11,13 +11,13 @@ function Items({ items, addItem, reduceItem, handleOnChange }) {
                 textDecoration: item.isSelected ? "line-through" : "none",
                 color: item.isSelected ? "#B5DDA4" : "white"
             }}>
-            <div>
+            <div className='item'>
                 <input
                     type="checkbox"
                     checked={item.isSelected}
                     onChange={() => handleOnChange(item.itemName)}
                 />
-                <span className='item'>{item.itemName}</span>
+                <span>{item.itemName}</span>
             </div>
             <ItemsNumber item={item} addItem={addItem} reduceItem={reduceItem} />
         </div>
