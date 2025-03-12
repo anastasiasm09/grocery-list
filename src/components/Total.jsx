@@ -6,7 +6,7 @@ function Total({ items }) {
             total += item.quantity
         }
     })
-    return <span>Total: {total} </span>
+    return <span className="total">Total: {total} </span>
 }
 
 export default Total;
