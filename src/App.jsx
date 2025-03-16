@@ -34,37 +34,42 @@ function App() {
   function handleOnChange(itemName) {
     setItems(prevItems =>
       prevItems.map(item =>
-        item.itemName === itemName ? { ...item, isSelected: !item.isSelected} : item
+        item.itemName === itemName ? { ...item, isSelected: !item.isSelected } : item
       )
     );
-  }
+  };
 
   const handleQuantityIncrease = (item) => {
     const addedValue = items.map((selectedItem) => {
       if (selectedItem.itemName === item.itemName) {
         const updatedItem = { ...selectedItem }
         updatedItem.quantity = updatedItem.quantity + 1
-        return updatedItem
-      } else {
-        return selectedItem
+        return updatedItem;
+      } 
+      else {
+        return selectedItem;
       }
     })
 
-    setItems(addedValue)
-  }
+    setItems(addedValue);
+  };
+
 
   const handleQuantityDecrease = (item) => {
     const reducedValue = items.map((selectedItem) => {
       if (selectedItem.itemName === item.itemName) {
         const updatedItem = { ...selectedItem }
-        updatedItem.quantity = updatedItem.quantity - 1
-        return updatedItem
-      } else {
-        return selectedItem
+        updatedItem.quantity = updatedItem.quantity - 1;
+        return updatedItem;
+      }
+      else {
+        return selectedItem;
       }
     })
-    setItems(reducedValue)
-  }
+    const updatedList = reducedValue.filter((item) => item.quantity !== 0)
+
+    setItems(updatedList);
+  };
 
   return (
     <>
