@@ -19,16 +19,25 @@ function App() {
 
   function handleSaveClick() {
     if (inputItem.length) {
-      const newItem = {
-        itemName: inputItem,
-        quantity: 1,
-        isSelected: false
-      };
-      const updatedItems = [...items, newItem];
+      const existingItem = items.find(item =>
+        item.itemName === inputItem)
 
-      setItems(updatedItems);
+      if (existingItem) {
+        existingItem.quantity += 1;
+        setItems(items);
+      } 
+      else {
+        const newItem = {
+          itemName: inputItem,
+          quantity: 1,
+          isSelected: false
+        };
+        const updatedItems = [...items, newItem];
+        setItems(updatedItems);
+      }
+
       setInputItem('');
-    }
+    };
   };
 
   function handleOnChange(itemName) {
@@ -43,9 +52,9 @@ function App() {
     const addedValue = items.map((selectedItem) => {
       if (selectedItem.itemName === item.itemName) {
         const updatedItem = { ...selectedItem }
-        updatedItem.quantity = updatedItem.quantity + 1
+        updatedItem.quantity += 1;
         return updatedItem;
-      } 
+      }
       else {
         return selectedItem;
       }
@@ -59,14 +68,14 @@ function App() {
     const reducedValue = items.map((selectedItem) => {
       if (selectedItem.itemName === item.itemName) {
         const updatedItem = { ...selectedItem }
-        updatedItem.quantity = updatedItem.quantity - 1;
+        updatedItem.quantity -= 1;
         return updatedItem;
       }
       else {
         return selectedItem;
       }
     })
-    const updatedList = reducedValue.filter((item) => item.quantity !== 0)
+    const updatedList = reducedValue.filter((item) => item.quantity !== 0);
 
     setItems(updatedList);
   };

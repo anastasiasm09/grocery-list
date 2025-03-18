@@ -7,6 +7,7 @@ function SaveItemButton({ inputItem, setInputItem, handleSaveClick }) {
         } else {
             setInputItem(event.target.value)
         }
+
     }
 
     return <>
